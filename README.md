@@ -64,6 +64,11 @@ No se puede tener consistencia perfecta y disponibilidad perfecta al mismo tiemp
 | Alertas | **AP** — disponibilidad | Si tarda en propagarse, lo peor es que alguien no reciba un aviso |
 | Notificaciones | **AP** — best-effort | Son avisos, el estado real se consulta en la API |
 
+### Documentación de arquitectura
+
+- **[docs/arquitectura-ivan.html](docs/arquitectura-ivan.html)** — diagrama interactivo completo (4 paneles: publicar vuelo, reservar con quorum, failover, topología). Ver en el navegador.
+- **[Propuesta de arquitectura completa](https://github.com/IvanErazun/ASWC-Grupo-2/blob/claude/practico-architecture-design-1r5hlq/docs/arquitectura.md)** — documento de trabajo del equipo con decisiones, trade-offs y preguntas al tutor.
+
 ---
 
 ## Cómo correr cada checkpoint
