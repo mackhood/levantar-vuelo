@@ -82,12 +82,11 @@ defmodule LevantarVuelo.Flight do
 
     case check_and_allocate(flight.available, specific, any_count) do
       {:ok, new_available, assigned} ->
-        new_state =
-          flight
-          |> put_in([:available], new_available)
-          |> put_in([:reservations, rid, :status], :confirmed)
-          |> put_in([:reservations, rid, :seats], assigned)
-
+        reservation = %{flight.reservations[rid] | status: :confirmed, seats: assigned}
+        new_state = %{flight |
+          available: new_available,
+          reservations: Map.put(flight.reservations, rid, reservation)
+        }
         new_state = maybe_close_sold_out(new_state)
         {:ok, new_state, assigned}
 
@@ -148,7 +147,8 @@ defmodule LevantarVuelo.Flight do
     total = avail.window + avail.aisle + avail.middle
 
     if total == 0 do
-      close(flight, :sold_out)
+      {closed_state, _cancelled_users} = close(flight, :sold_out)
+      closed_state
     else
       flight
     end
