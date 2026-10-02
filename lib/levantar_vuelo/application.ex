@@ -8,8 +8,7 @@ defmodule LevantarVuelo.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: LevantarVuelo.Worker.start_link(arg)
-      # {LevantarVuelo.Worker, arg}
+      {Registry, keys: :unique, name: LevantarVuelo.Registry}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
