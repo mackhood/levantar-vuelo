@@ -9,7 +9,8 @@ defmodule LevantarVuelo.Application do
   def start(_type, _args) do
     children = [
       {Registry, keys: :unique, name: LevantarVuelo.Registry},
-      LevantarVuelo.AlertIndex
+      LevantarVuelo.AlertIndex,
+      {Bandit, plug: LevantarVuelo.Router, port: 4000}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
