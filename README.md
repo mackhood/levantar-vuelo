@@ -1,8 +1,20 @@
-# Levantar Vuelo — Checkpoint 1
+# Levantar Vuelo
 
 TP grupal IASC 2C2026. Sistema de reserva de vuelos construido en Elixir/OTP.
 
+## Checkpoints
+
+| # | Fecha | Estado | Documentación |
+|---|---|---|---|
+| 1 | 08/10 | ✅ Entregado | [Tradeoffs](docs/checkpoint-1/tradeoffs.md) · [Debate](docs/checkpoint-1/debate.md) |
+| 2 | 29/10 | 🔜 Pendiente | — |
+| Final | 13/12 | 🔜 Pendiente | — |
+
+Cada checkpoint tiene su propia carpeta en `docs/` con las decisiones tomadas y los puntos abiertos que discutimos como equipo. Para ver el estado exacto del código en cada entrega, usá los tags de git: `git checkout checkpoint-1`.
+
 ---
+
+## Checkpoint 1 — Dominio en un nodo
 
 ## Índice
 
