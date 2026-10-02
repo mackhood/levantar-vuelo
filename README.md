@@ -10,7 +10,7 @@ Cada checkpoint tiene su propia carpeta con el proyecto completo tal como quedó
 
 | # | Fecha | Estado | Carpeta |
 |---|---|---|---|
-| 1 | 08/10 | ✅ Entregado | [checkpoint-1/](checkpoint-1/) |
+| 1 | 08/10 | 🔖 v1 | [checkpoint-1/](checkpoint-1/) |
 | 2 | 29/10 | 🔜 Pendiente | — |
 | Final | 13/12 | 🔜 Pendiente | — |
 
