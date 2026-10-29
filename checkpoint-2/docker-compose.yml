@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    # Tres nodos iguales. Docker resuelve el nombre "app" a las IPs de las tres,
+    # y libcluster usa ese DNS para encontrarlos. También: --scale app=N
+    deploy:
+      replicas: 3
+    environment:
+      - MIX_ENV=prod
+      # Misma cookie en todos los nodos (solo para desarrollo, no es un secreto real)
+      - RELEASE_COOKIE=levantar_vuelo_dev
+      # Nombre de servicio que libcluster le pregunta al DNS (ver config/runtime.exs)
+      - CLUSTER_DNS_QUERY=app
+    # Sin "ports": las réplicas solo se ven dentro de la red de Docker.
+    # El único punto de entrada desde afuera es nginx.
+    expose:
+      - "4000"
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+
+  # Plano de control: API para levantar y bajar nodos (ver control/).
+  # Tiene montado el socket de Docker, así que puede manejar contenedores de la
+  # máquina: por eso solo escucha en localhost y solo toca los contenedores de "app".
+  control:
+    build: ./control
+    ports:
+      - "127.0.0.1:4001:4001"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
